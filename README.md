@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# NimBusCart
 
 1. Clone repo to your computer. 
 
