@@ -1,3 +1,4 @@
+import "../index.css";
 import React, {useState} from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import {  createUserWithEmailAndPassword  } from 'firebase/auth';
@@ -34,7 +35,7 @@ const Signup = () => {
     }
  
   return (
-    <main >        
+    <main >
         <section>
             <div>
                 <div>                  
@@ -87,7 +88,7 @@ const Signup = () => {
                     {/* Syntax: condition ? <expression if true> : <expression if false> */}
                    
                         {
-                            message.length == 0 ? <p></p>: <p>{message}</p>
+                            message.length === 0 ? <p></p>: <p className='text-2x1 bg-red-'>{message}</p>
                         }
                                     
                 </div>
