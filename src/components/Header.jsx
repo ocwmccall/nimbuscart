@@ -1,4 +1,5 @@
-import '../logo.jpg'
+import '../logo.jpg';
+import React from "react";
 import { useLocation, useNavigate } from "react-router";
 
 export default function Header() {
