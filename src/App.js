@@ -9,23 +9,26 @@ import CurrenLists from './pages/CurrenLists';
 import List from './pages/List';
 import ForgotPassword from './pages/ForgotPassword';
 import Header from './components/Header';
+import MoveItem from './pages/MoveItem';
+
  
 export default function App() {
+  MoveItem();
  
-  return (   
-      <>        
-        <Router>
-          <Header />                         
-              <Routes>                             
-                  <Route path="/" element={<Signup/>}/>
-                  <Route path="/signup" element={<Signup/>}/>
-                  <Route path="/login" element={<Login/>}/>
-                  <Route path="/lists" element={<CurrenLists/>}/>
-                  <Route path="/lists/list" element={<List/>}/>
-                  <Route path="/forgotpassword" element={<ForgotPassword/>}/>
-              </Routes>                    
-        </Router>
-      </>
+  // return (   
+  //     <>        
+  //       <Router>
+  //         <Header />                         
+  //             <Routes>                             
+  //                 <Route path="/" element={<Signup/>}/>
+  //                 <Route path="/signup" element={<Signup/>}/>
+  //                 <Route path="/login" element={<Login/>}/>
+  //                 <Route path="/lists" element={<CurrenLists/>}/>
+  //                 <Route path="/lists/list" element={<List/>}/>
+  //                 <Route path="/forgotpassword" element={<ForgotPassword/>}/>
+  //             </Routes>                    
+  //       </Router>
+  //     </>
    
-  );
+  // );
 }

@@ -1,44 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import {Grid} from 'material-ui/core/Grid';
 
 export default function MoveItem() {
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/users')
-        .then(response => response.json())
-        .then(data => setData(data));
-    })
+    const sample = "var";
     return (
-        <Container fluid>
-            <Col></Col>
-            <Col>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data.map(item => (
-                            <tr key={item.id}>
-                                <td>{item.name}</td>
-                                <td>{item.email}</td>
-                                <td>{item.phone}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </Col>
-            <Col>
-                <table>
+        <main>
+            <Grid
+                container="true"
+                direction="row"
+                justify="center"
+                alignitems="flex-start">
+            <Grid
+            item="true">
+                
+            </Grid>
+            <Grid
+            container="true"
+            justify="center"
+            aligncenter="center"
+            direction="column">
 
-                </table>
-            </Col>
-            <Col></Col>
-        </Container>
+            </Grid>
+
+        </Grid>
+        </main>
     )
 }
 
