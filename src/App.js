@@ -23,8 +23,8 @@ export default function App() {
 					<Header />
 					<Routes>
 						<Route path="/" element={user ? < MyLists />: <Navigate to="login" />} />
-						<Route path="/signup" element={<Signup /> } />
-						<Route path="/login" element={ <MyLists />} />
+						<Route path="/signup" element={!user ? <Signup /> : <Navigate to="mylist" />} />
+						<Route path="/login" element={ <Login />} />
 						<Route path="/mylists" element={<MyLists /> } />
 						<Route path="/listeditor" element={ <ListEditor /> } />
 						<Route path="/finditem" element={ <FindItem /> } />
