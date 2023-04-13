@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-export default function CurrenLists() {
+export default function MyLists() {
 
   return (
 
