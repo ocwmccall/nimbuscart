@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { useAuthContext} from './useAuthContext'
-​
+import { useAuthContext} from './useAuthContext';
 import { auth } from '../firebase';
-​
 import { sendPasswordResetEmail } from "firebase/auth";
-​
+
 export const usePasswordReset = () => {
     const navigate = useNavigate()
     const [error, setError] = useState(null);
@@ -13,7 +11,7 @@ export const usePasswordReset = () => {
     
     const passwordreset = (email) => {
         setError(null)
-​
+
         sendPasswordResetEmail(auth, email)
             .then(
                 () => {
@@ -27,6 +25,6 @@ export const usePasswordReset = () => {
                 }
             )
     }
-​
+
     return { error, passwordreset }
 }

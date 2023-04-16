@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { usePasswordReset } from "../hooks/usePasswordReset";
 
-
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const  {error, passwordreset} = usePasswordReset();
