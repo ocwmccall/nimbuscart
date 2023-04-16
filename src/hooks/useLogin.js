@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { useAuthContext } from "../hooks/useAuthContext";
+import { useAuthContext } from "./useAuthContext";
 
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
