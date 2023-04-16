@@ -1,0 +1,8 @@
+h1 {
+    font-family: "Rajdhani", sans-serif;
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 64px;
+    text-shadow: 2px 2px 0px rgba(242, 250, 252, 1);
+  }
+  

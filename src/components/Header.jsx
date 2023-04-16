@@ -2,7 +2,7 @@ import '../logo.jpg';
 import React from "react";
 import { useLocation, useNavigate } from "react-router";
 import { useLogout } from '../hooks/useLogout';
-
+import './src/styles/header/header.css';
 export default function Header() {
     
     const { logout} = useLogout();
