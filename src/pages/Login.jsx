@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
 
+
+
 const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -13,9 +15,10 @@ const Login = () => {
 
 	return (
 		<div className="container">
-			<h1> NimBusCart </h1>
-			<form onSubmit={handleSubmit}>
-				<label>
+			
+			<form className="center" onSubmit={handleSubmit}>
+				<div>
+					<label>
 					<span>email:</span>
 					<input
 						required
@@ -24,6 +27,8 @@ const Login = () => {
 						value={email}
 					/>
 				</label>
+				</div>
+				<div>
 				<label>
 					<span>password:</span>
 					<input
@@ -33,7 +38,14 @@ const Login = () => {
 						value={password}
 					/>
 				</label>
-				<button className='btn'>Login</button>
+				</div>
+				<button style={{
+                  borderRadius: 25,
+                  backgroundColor:"#613cf5",
+                  padding: "18px 36px",
+                  fontSize: "25px",
+                  color: "#f2fafc",
+                }}>Login</button>
 				{error && <p>{error}</p>}
 			</form>
 		</div>
