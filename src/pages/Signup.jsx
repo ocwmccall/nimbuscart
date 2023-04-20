@@ -42,6 +42,12 @@ const Signup = () => {
             </label>
           </div>
           <div>
+            <label>
+              <span>confirm password:</span>
+              <input required type="password" />
+            </label>
+          </div>
+          <div>
             <button
               style={{
                 borderRadius: 25,
