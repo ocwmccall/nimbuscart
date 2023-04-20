@@ -1,22 +1,29 @@
-
+h2 {
+  font-family: "Rajdhani", sans-serif;
+  padding-right: 40px;
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 64px;
+  text-shadow: 2px 2px 0px rgba(242, 250, 252, 1);
+  align-self: center;
+}
 .container {
-    display: flex;
-    height: 100%;
-    min-width: 100%;
-    background-color:var(--color-white);
-    font-family: "Rajdhani", sans-serif;
-    color: var(--color-primary);
-    font-weight: 600;
-    font-size: 35px;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  height: 100%;
+  min-width: 100%;
+  background-color: var(--color-white);
+  font-family: "Rajdhani", sans-serif;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 35px;
+  align-items: center;
+  justify-content: center;
 }
 
 .center {
-    background-color: var(--color-gray);
-    height: 100%;
-    border: 5px solid;
-    align-items: center;
-    justify-content: center;
-    
-  }
+  background-color: var(--color-gray);
+  height: 100%;
+  border: 5px solid;
+  align-items: center;
+  justify-content: center;
+}
