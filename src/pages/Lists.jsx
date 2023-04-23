@@ -1,9 +1,9 @@
 export default function Lists({ lists }) {
 
-  console.log(lists)
+  console.log("We are in Lists.jsx: lists=", lists)
 
     const handleClick = async (id) => {
-    //   console.log(id)
+      console.log(id)
     }
   
     return (
