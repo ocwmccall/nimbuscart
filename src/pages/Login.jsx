@@ -50,7 +50,7 @@ const Login = () => {
         </button>
         {error && <p>{error}</p>}
         <div>
-          <ForgotPassword></ForgotPassword>
+          <button>Forgot Password</button>
         </div>
       </form>
     </div>
