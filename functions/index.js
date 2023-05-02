@@ -11,13 +11,22 @@ exports.newListTrigger = functions.firestore
 
     const uid = newList.uid;
     const title = newList.title;
+    const docId = context.params.docId;
 
     return db.collection("users").where("uid", "==", uid).where("title", "==", "__ListIndex").get()
     .then(userIndex => {
         userIndex.forEach(index => {
           lists = index.data("lists").lists;
-          lists.push({[title]: uid});
-          index.update({lists: lists});
+          tmpID = index.data().id;
+          console.log("lists: ", lists);
+          lists[title] = docId;
+          console.log("updatedLists: ", lists);
+          index.set({title: "__ListIndex", uid: uid, lists: lists});
         })
       })
   });
+
+// exports.deleteListTrigger = functions.firestore
+//   .document('users/{docId}')
+//   .onDelete((snap, context) => {});
+
