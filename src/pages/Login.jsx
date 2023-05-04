@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
 import ForgotPassword from "./ForgotPassword";
+import { Navigate, useNavigate } from "react-router";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { error, login } = useLogin();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,7 +52,7 @@ const Login = () => {
         </button>
         {error && <p>{error}</p>}
         <div>
-          <button>Forgot Password</button>
+          <button onClick={() => navigate("/forgotpassword")}>Forgot Password</button>
         </div>
       </form>
     </div>
