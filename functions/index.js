@@ -15,13 +15,11 @@ exports.newListTrigger = functions.firestore
 
     return db.collection("users").where("uid", "==", uid).where("title", "==", "__ListIndex").get()
     .then(userIndex => {
-        userIndex.forEach(index => {
-          lists = index.data("lists").lists;
-          tmpID = index.data().id;
-          console.log("lists: ", lists);
+        userIndex.forEach(idx => {
+          lists = idx.data("lists").lists;
+          // tmpID = index.data().id;
           lists[title] = docId;
-          console.log("updatedLists: ", lists);
-          index.set({title: "__ListIndex", uid: uid, lists: lists});
+          idx.ref.set({lists: lists}, {merge: true});
         })
       })
   });
