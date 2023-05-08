@@ -1,4 +1,4 @@
-import { createContext, useReducer, useEffect } from "react";
+import React, { createContext, useReducer, useEffect } from "react";
 import { auth } from "../firebase"
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -8,10 +8,8 @@ export const authReducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN':
       return { ...state, user: action.payload }
-
     case 'RESET':
       return { ...state, user: action.payload }
-
     case 'LOGOUT':
       return { ...state, user: null }
     case 'AUTH_IS_READY':
