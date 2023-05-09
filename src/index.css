@@ -14,94 +14,110 @@
   --color-black: #27262c;
 }
 
-.main {
-  text-align: center;
-  justify-content: center;
-  display: flex;
-  padding: 90px 0 90px 0;
-  background-color: whitesmoke;
+
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
 }
-
-.sub-main {
-  display: flex;
-  justify-content: center;
-  height: 550px;
-  width: 35%;
-  box-shadow: 11px 12px 13px 12px rgb(207, 207, 207);
-  padding-top: 30px;
-  border-radius: 60px;
-  background-color: var(--color-gray);
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
 }
-
-.imgs {
-  padding: 20px;
-  justify-content: center;
-  display: flex;
+/*
+  3. Allow percentage-based heights in the application
+*/
+html, body {
+  height: 100%;
 }
-
-.container-image {
-  background-color: rgb(223, 221, 221);
-  border-radius: 150px;
-  align-items: center;
-  display: flex;
-  height: 115px;
-  width: 115px;
+/*
+  Typographic tweaks!
+  4. Add accessible line-height
+  5. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
-
-.profile {
-  height: 100px;
-  width: 100px;
-  border-radius: 130px;
+/*
+  6. Improve media defaults
+*/
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
 }
-
-input {
-  width: 300px;
-  height: 50px;
-  border-radius: 60px;
-  box-shadow: inset 0px 0px 25px 0px #888;
-  border: none;
-  outline: none;
-  background-color: #fff;
+/*
+  7. Remove built-in form typography styles
+*/
+input, button, textarea, select {
+  font: inherit;
 }
-
-.email {
-  height: 25px;
-  width: 25px;
-  position: absolute;
-  padding: -30px 0 0 -25px;
-} 
-
-.name {
-  padding-left: 70px;
-  font-size: 20px;
+/*
+  8. Avoid text overflows
+*/
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
 }
-
-.second-input {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-button {
-  width: 380px;
-  height: 50px;
-  border-radius: 60px;
-  background-color: var(--color-secondary);
-  color: white;
-  font-size: 28px;
-  border: none;
+/*
+  9. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
 }
 
 
-.login-button {
-  padding-top: 25px;
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
 }
-
-.link {
-  font-size: 25px;
-  font-weight: 400;
-  font-style: italic;
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
 }
-
-  a {
-    color: var(--color-primary);
-  }
+/*
+  3. Allow percentage-based heights in the application
+*/
+html, body {
+  height: 100%;
+}
+/*
+  Typographic tweaks!
+  4. Add accessible line-height
+  5. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+  6. Improve media defaults
+*/
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+  7. Remove built-in form typography styles
+*/
+input, button, textarea, select {
+  font: inherit;
+}
+/*
+  8. Avoid text overflows
+*/
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+/*
+  9. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}

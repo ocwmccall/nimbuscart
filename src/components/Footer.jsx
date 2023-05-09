@@ -1,0 +1,43 @@
+import React from "react";
+import styled from "styled-components";
+
+
+const Wrapper = styled.footer`
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #073b4c;
+  text-align: center;
+  span {
+    color: var(--clr-primary-5);
+  }
+  h5 {
+    color: var(--clr-white);
+    margin: 0.1rem;
+    font-weight: 400;
+    text-transform: none;
+    line-height: 1.25;
+  }
+  @media (min-width: 776px) {
+    flex-direction: row;
+}
+`
+
+
+function Footer() {
+  return (
+    <Wrapper>
+        <h5>
+          &copy; {new Date().getFullYear()}<span> NimbusCart </span>
+        </h5>
+        <div>All rights reserved</div>
+        <br />
+        {/* <div>Give Us Feedback</div>
+        <div> Created by HOYRLK</div>       */}
+    </Wrapper>
+  );
+}
+
+export default Footer;

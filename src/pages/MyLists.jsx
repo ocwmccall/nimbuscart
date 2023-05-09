@@ -12,6 +12,7 @@ export default function MyLists({ user }) {
 
   const getListIndex = async () => {
     const q = query(collection(db, "users"), where("uid", "==", user.uid), where("title", "==", "__ListIndex"))
+    // const q = query(collection(db, "users"), where("title", "==", "__ListIndex"))
 
     await getDocs(q).then((snapshot) => {
       let results = []
