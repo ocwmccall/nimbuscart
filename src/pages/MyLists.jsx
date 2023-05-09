@@ -32,15 +32,13 @@ export default function MyLists({ user }) {
 
     const newTitle = name.trim();
     if (newTitle === "" || newTitle === "__ListIndex" || lists.includes(item => item.title === newTitle)) return;
-    
+
     const docRef = await addDoc(collection(db, "users"), {
       title: newTitle,
       uid: user.uid,
       items: []
     });
-    console.log("Document written with ID: ", docRef.id);
-    // should check here if docRef is real or an error...
-    getListIndex();
+    setLists(oldLists => [...oldLists, {id: docRef.id, title: newTitle}]);
   };
 
   useEffect(() => {
