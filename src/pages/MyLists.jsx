@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { db } from '../firebase'
-import { collection, getDocs, addDoc, deleteDoc, updateDoc, deleteField, query, where } from 'firebase/firestore';
+import { collection, getDocs, addDoc, deleteDoc, query, where } from 'firebase/firestore';
 import Lists from './Lists';
 
 export default function MyLists({ user }) {
