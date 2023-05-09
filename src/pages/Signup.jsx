@@ -67,4 +67,10 @@ const Signup = () => {
   );
 };
 
+
+// const Styling = styled.div`
+
+
+// `
+
 export default Signup;
