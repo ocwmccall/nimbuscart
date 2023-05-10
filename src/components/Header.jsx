@@ -1,13 +1,12 @@
-
 import React, { useState, useRef } from "react";
-import { FaBars, FaTimes } from 'react-icons/fa'
-import { Link } from 'react-router-dom';
+import { FaBars, FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
-import { useLogout } from '../hooks/useLogout';
-import styled from 'styled-components';
-import nimbuscart from '../assets/nimbuscart.png'
-import nlogo from '../assets/nlogo.png'
-import MenuLinks from './MenuLinks';
+import { useLogout } from "../hooks/useLogout";
+import styled from "styled-components";
+import nimbuscart from "../assets/nimbuscart.png";
+import nlogo from "../assets/nlogo.png";
+import MenuLinks from "./MenuLinks";
 
 // styling
 
@@ -128,7 +127,7 @@ const linkStyles = {
 }
 
 
-`
+`;
 
 const NavContainer = styled.nav`
   background-color: #073b4c;
@@ -140,7 +139,6 @@ const NavCenter = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
 
   .nav-header {
     display: flex;
@@ -215,57 +213,43 @@ const NavCenter = styled.div`
       margin-right: 1rem;
     }
   }
-`
-
-
-
+`;
 
 export default function Header() {
-    
   const [showLinks, setShowLinks] = useState(false);
 
   const toggleLinks = () => {
     setShowLinks(!showLinks);
   };
 
-    const { logout} = useLogout();
-    const location = useLocation();
-    const pathName = location.pathname;
-    const navigate = useNavigate();
-    console.log(pathName);
-    // function pathMathRoute(route){
-    //   if(route === pathName){
-    //     return true;
-    //   }
-    // }
+  const { logout } = useLogout();
+  const location = useLocation();
+  const pathName = location.pathname;
+  const navigate = useNavigate();
+  console.log(pathName);
+  // function pathMathRoute(route){
+  //   if(route === pathName){
+  //     return true;
+  //   }
+  // }
 
-
-    return (
-      <NavContainer>
-        <NavCenter>
-          <div className="nav-header">
-            <Link to="/">
-              <img src={nlogo} alt="nimbuscart logo" className="logo" />
-            </Link>
-            <button type="button" className="nav-toggle" onClick={toggleLinks}>
-              {showLinks ? <FaTimes /> : <FaBars />}
-            </button>
-          </div>
-          <ul className={showLinks ? 'links show-links' : 'links'}>
-            <li onClick={() => navigate('/login')}>
-              login
-            </li>
-            <li onClick={() => navigate('/signup')}>
-              Signup
-            </li>
-            <li onClick={logout}>
-              Lougout
-            </li>
-          </ul>
-        </NavCenter>
-      </NavContainer>
-    );
+  return (
+    <NavContainer>
+      <NavCenter>
+        <div className="nav-header">
+          <Link to="/">
+            <img src={nlogo} alt="nimbuscart logo" className="logo" />
+          </Link>
+          <button type="button" className="nav-toggle" onClick={toggleLinks}>
+            {showLinks ? <FaTimes /> : <FaBars />}
+          </button>
+        </div>
+        <ul className={showLinks ? "links show-links" : "links"}>
+          <li onClick={() => navigate("/login")}>Login</li>
+          <li onClick={() => navigate("/signup")}>Signup</li>
+          <li onClick={logout}>Logout</li>
+        </ul>
+      </NavCenter>
+    </NavContainer>
+  );
 }
-
- 
-
