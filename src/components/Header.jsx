@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import nimbuscart from '../assets/nimbuscart.png'
 import nlogo from '../assets/nlogo.png'
 import MenuLinks from './MenuLinks';
+import { useAuthContext } from "../hooks/useAuthContext";
 
 // styling
 
@@ -132,7 +133,7 @@ const linkStyles = {
 
 const NavContainer = styled.nav`
   background-color: #073b4c;
-  padding: 0.5rem;
+  padding: 0 0.5rem;
   color: #ef476f;
 `;
 
@@ -169,9 +170,12 @@ const NavCenter = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    text-transform: uppercase;
 
     li {
-      margin-right: 1rem;
+      font-size: .9rem;
+      font-weight: bold;
+      padding: 20px .5rem;
 
       a {
         text-decoration: none;
@@ -182,6 +186,11 @@ const NavCenter = styled.div`
           color: #0099ff;
         }
       }
+    }
+
+    li:hover {
+        color: #ffd166;
+        background: #ef476f;
     }
   }
 
@@ -223,6 +232,7 @@ const NavCenter = styled.div`
 export default function Header() {
     
   const [showLinks, setShowLinks] = useState(false);
+  const { user, authIsReady } = useAuthContext();
 
   const toggleLinks = () => {
     setShowLinks(!showLinks);
@@ -255,12 +265,27 @@ export default function Header() {
             <li onClick={() => navigate('/login')}>
               login
             </li>
-            <li onClick={() => navigate('/signup')}>
+
+            {
+              user ? 
+                <li onClick={() => navigate('/mylists')}>My lists</li> : null
+            }
+
+            {
+              !user ? <li onClick={() => navigate('/signup')}>
               Signup
-            </li>
-            <li onClick={logout}>
-              Lougout
-            </li>
+            </li> : ""
+            }
+            
+            {
+              user ? 
+              <li onClick={logout}>
+                Lougout
+              </li>
+              : 
+              ""
+            }
+            
           </ul>
         </NavCenter>
       </NavContainer>

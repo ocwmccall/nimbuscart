@@ -1,16 +1,82 @@
-import React from 'react'
-import "../styles/list.css"
+import React, { useMemo, useState, useRef } from 'react';
+import MaterialReactTable from 'material-react-table';
 
-export default function ListEditor() {
+const DnDTable = () => {
+  const columns = useMemo(
+    //column definitions...
+    () => [
+      {
+        accessorKey: 'url',
+        header: 'URL',
+      },
+      {
+        accessorKey: 'quantity',
+        header: 'Quantity',
+      },
+      {
+        accessorKey: 'price',
+        header: 'Price',
+      },
+      {
+        accessorKey: 'name',
+        header: 'Name',
+      },
+      
+    ],
+    [],
+    //end
+  );
+
+  const [data, setData] = useState([
+    {
+      firstName: 'Dylan',
+      lastName: 'Murray',
+      city: 'East Daphne',
+    },
+    {
+      firstName: 'Raquel',
+      lastName: 'Kohler',
+      city: 'Columbus',
+    },
+    {
+      firstName: 'Ervin',
+      lastName: 'Reinger',
+      city: 'South Linda',
+    },
+    {
+      firstName: 'Brittany',
+      lastName: 'McCullough',
+      city: 'Lincoln',
+    },
+    {
+      firstName: 'Branson',
+      lastName: 'Frami',
+      city: 'Charleston',
+    },
+  ]);
+
   return (
-    <div className='container'>List
+    <MaterialReactTable
+      autoResetPageIndex={false}
+      columns={columns}
+      data={data}
+      enableRowOrdering
+      enableSorting={false}
+      muiTableBodyRowDragHandleProps={({ table }) => ({
+        onDragEnd: () => {
+          const { draggingRow, hoveredRow } = table.getState();
+          if (hoveredRow && draggingRow) {
+            data.splice(
+              hoveredRow.index,
+              0,
+              data.splice(draggingRow.index, 1)[0],
+            );
+            setData([...data]);
+          }
+        },
+      })}
+    />
+  );
+};
 
-      <ul>
-        <li>one</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-      </ul>
-    </div>
-  )
-}
+export default DnDTable;
