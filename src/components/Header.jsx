@@ -5,9 +5,7 @@ import { Link } from 'react-router-dom';
 import { useLocation, useNavigate } from "react-router";
 import { useLogout } from '../hooks/useLogout';
 import styled from 'styled-components';
-import nimbuscart from '../assets/nimbuscart.png'
 import nlogo from '../assets/nlogo.png'
-import MenuLinks from './MenuLinks';
 
 // styling
 
