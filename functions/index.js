@@ -4,6 +4,27 @@ const admin = require('firebase-admin');
 admin.initializeApp();
 const db = admin.firestore();
 
+exports.newUserTrigger = functions.auth.user().onCreate((user) => {
+  const newIndex = {
+    title: "__ListIndex",
+    uid: user.uid,
+    lists: {}
+  }
+  return db.collection("users").add(newIndex);
+});
+
+// exports.deleteUserTrigger = functions.auth.user().onDelete((user) => {
+//   const newIndex = {
+//     title: "__ListIndex",
+//     uid: user.uid,
+//     lists: {}
+//   }
+//   return db.collection("users").where("uid", "==", user.uid).get()
+//     .then(item => {
+//       item.deleteDoc();
+//     })
+// });
+
 exports.newListTrigger = functions.firestore
   .document('users/{docId}')
   .onCreate((snap, context) => {
@@ -12,6 +33,8 @@ exports.newListTrigger = functions.firestore
     const uid = newList.uid;
     const title = newList.title;
     const docId = context.params.docId;
+
+    if (title === "__ListIndex") return;
 
     return db.collection("users").where("uid", "==", uid).where("title", "==", "__ListIndex").get()
       .then(userIndex => {
