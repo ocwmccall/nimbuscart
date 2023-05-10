@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Routes, Route, Navigate } from "react-router";
 import { useAuthContext } from "./hooks/useAuthContext";
+import DataProvider from "./context/DataProvider";
 
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
@@ -29,6 +30,7 @@ export default function App() {
   const { user, authIsReady } = useAuthContext();
 
   return (  
+    <DataProvider>
        <div>
       {authIsReady && (
         <Router>
@@ -54,5 +56,6 @@ export default function App() {
         </Router>
       )}
     </div>   
+    </DataProvider>
   );
 }

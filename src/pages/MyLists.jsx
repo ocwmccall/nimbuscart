@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import DataContext from '../context/DataContext';
 
 import { db } from '../firebase'
 import { collection, getDocs, addDoc, deleteDoc, updateDoc, deleteField, query, where } from 'firebase/firestore';
@@ -9,7 +10,11 @@ function MyLists({ user }) {
   const [lists, setLists] = useState(null);
   const [name, setName] = useState("");
 
+  const {selectedId} = useContext(DataContext)
+
   // console.log("USER: ", user.uid)
+  console.log("SELECTEDID:", selectedId)
+
 
   const getListIndex = async () => {
     const q = query(collection(db, "users"), where("uid", "==", user.uid), where("title", "==", "__ListIndex"))
@@ -43,43 +48,44 @@ function MyLists({ user }) {
     setLists(oldLists => [...oldLists, {id: docRef.id, title: newTitle}]);
   };
 
+  const handleDeleteList = async (e) => { await console.log(selectedId) };
+
   useEffect(() => {
     getListIndex()
   }, [])
 
   return (
     <Styling>
-       <div className='container'>
-      <div className="lists">
-        <h2> saved lists</h2>
-        <div>
-          <h1>Lists</h1>
-          {
-            lists && <Lists lists={lists} />
-          }
-          
+        <div className='container'>
+            <div className="lists">
+              <h2> Saved lists</h2>
+              <div>
+                <h1>Lists</h1>
+                {
+                  lists && <Lists lists={lists} />
+                }
+                
+              </div>
+            </div>
+            <div className="list-operations">
+              <div>
+                <form onSubmit={handleNewList}>
+                  <label>
+                    <span>New List Name:</span>
+                    <input
+                      required
+                      type="string"
+                      onChange={(e) => setName(e.target.value)}
+                      value={name}
+                    />
+                  </label>
+                  <button className='btn'>New List</button>
+                </form>
+                <button>Edit List</button>
+                <button onClick={handleDeleteList}>Delete List</button>
+              </div>
+            </div>      
         </div>
-      </div>
-      <div className="list-operations">
-      <div>
-          <form onSubmit={handleNewList}>
-            <label>
-              <span>New List Name:</span>
-              <input
-                required
-                type="string"
-                onChange={(e) => setName(e.target.value)}
-                value={name}
-              />
-            </label>
-            <button className='btn'>New List</button>
-          </form>
-          <button>Edit List</button>
-          <button>Delete List</button>
-        </div>
-      </div>
-      
-    </div>
     </Styling>
    
   )
@@ -166,8 +172,12 @@ const Styling = styled.div`
     transition: all 0.5s linear;
   }
 
-  li:nth-child(odd){
+  MuiListItemText-root:nth-child(odd){
     background: rgba(24, 138, 178, .2);
+  }
+
+  .MuiListItemText-root:nth-child(odd):hover{
+    background-color: rgba()
   }
 `
 export default MyLists;
