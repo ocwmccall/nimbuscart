@@ -6,8 +6,6 @@ import ListItemText from '@mui/material/ListItemText';
 import DataContext from '../context/DataContext';
 
 export default function Lists({ lists }) {
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
-
   const [selectedIndex, setSelectedIndex] = useState(1);
 
   const {selectedId, setSelectedId} = useContext(DataContext)
