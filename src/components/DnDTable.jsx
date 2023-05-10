@@ -50,11 +50,15 @@ const DnDTable = () => {
     },
   ]);
 
+
   return (
     <MaterialReactTable
       autoResetPageIndex={false}
       columns={columns}
       data={data}
+      editingMode="modal"
+      enableEditing
+      
       enableRowOrdering
       enableSorting={false}
       muiTableBodyRowDragHandleProps={({ table }) => ({
