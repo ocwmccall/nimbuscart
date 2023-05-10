@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import DataContext from '../context/DataContext';
 
 import { db } from '../firebase'
-import { collection, getDocs, addDoc, deleteDoc, updateDoc, deleteField, query, where } from 'firebase/firestore';
+import { collection, getDocs, addDoc, deleteDoc, doc, query, where } from 'firebase/firestore';
 import Lists from './Lists';
 import styled from 'styled-components';
 
@@ -10,15 +10,10 @@ function MyLists({ user }) {
   const [lists, setLists] = useState(null);
   const [name, setName] = useState("");
 
-  const {selectedId} = useContext(DataContext)
-
-  // console.log("USER: ", user.uid)
-  console.log("SELECTEDID:", selectedId)
-
+  const { selectedId } = useContext(DataContext)
 
   const getListIndex = async () => {
     const q = query(collection(db, "users"), where("uid", "==", user.uid), where("title", "==", "__ListIndex"))
-    // const q = query(collection(db, "users"), where("title", "==", "__ListIndex"))
 
     await getDocs(q).then((snapshot) => {
       let results = []
@@ -45,10 +40,21 @@ function MyLists({ user }) {
       uid: user.uid,
       items: []
     });
-    setLists(oldLists => [...oldLists, {id: docRef.id, title: newTitle}]);
+    setLists(oldLists => [...oldLists, { id: docRef.id, title: newTitle }]);
   };
 
-  const handleDeleteList = async (e) => { await console.log(selectedId) };
+  const handleDeleteList = async (e) => {
+    let updatedLists = lists.filter(elem => elem.id !== selectedId);
+    setLists(updatedLists);
+
+    await deleteDoc(doc(db, "users", selectedId));
+  };
+
+  const handleEditList = (e) => {
+    const docRef = doc(db, "users", selectedId);
+
+    // do stuff
+  };
 
   useEffect(() => {
     getListIndex()
@@ -56,38 +62,38 @@ function MyLists({ user }) {
 
   return (
     <Styling>
-        <div className='container'>
-            <div className="lists">
-              <h2> Saved lists</h2>
-              <div>
-                <h1>Lists</h1>
-                {
-                  lists && <Lists lists={lists} />
-                }
-                
-              </div>
-            </div>
-            <div className="list-operations">
-              <div>
-                <form onSubmit={handleNewList}>
-                  <label>
-                    <span>New List Name:</span>
-                    <input
-                      required
-                      type="string"
-                      onChange={(e) => setName(e.target.value)}
-                      value={name}
-                    />
-                  </label>
-                  <button className='btn'>New List</button>
-                </form>
-                <button>Edit List</button>
-                <button onClick={handleDeleteList}>Delete List</button>
-              </div>
-            </div>      
+      <div className='container'>
+        <div className="lists">
+          <h2> Saved lists</h2>
+          <div>
+            <h1>Lists</h1>
+            {
+              lists && <Lists lists={lists} />
+            }
+
+          </div>
         </div>
+        <div className="list-operations">
+          <div>
+            <form onSubmit={handleNewList}>
+              <label>
+                <span>New List Name:</span>
+                <input
+                  required
+                  type="string"
+                  onChange={(e) => setName(e.target.value)}
+                  value={name}
+                />
+              </label>
+              <button className='btn'>New List</button>
+            </form>
+            <button onClick={handleEditList}>Edit List</button>
+            <button onClick={handleDeleteList}>Delete List</button>
+          </div>
+        </div>
+      </div>
     </Styling>
-   
+
   )
 }
 
