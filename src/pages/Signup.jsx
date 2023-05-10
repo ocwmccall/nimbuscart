@@ -14,7 +14,7 @@ const Signup = () => {
   return (
     <div className="container">
       <div>
-        <h2>Sign up</h2>
+        <h2>Signup</h2>
       </div>
 
       <div>
