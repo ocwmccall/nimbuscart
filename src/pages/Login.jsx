@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import { useLogin } from "../hooks/useLogin";
 import ForgotPassword from "./ForgotPassword";
 import styled from "styled-components";
@@ -7,8 +8,10 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { error, login } = useLogin();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
     login(email, password);
   };
@@ -54,7 +57,7 @@ const Login = () => {
                   Login
                 </button>            
                 <div>
-                  <button>Forgot Password</button>
+                  <button onClick={()=>navigate("/forgotPassword") } >Forgot Password</button>
                 </div>
             </div>
             {error && <p>{error}</p>}
