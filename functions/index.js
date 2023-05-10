@@ -63,9 +63,3 @@ exports.deleteListTrigger = functions.firestore
         })
       })
   });
-
-// exports.saveListTrigger = functions.firestore
-//   .document('users/{docId}')
-//   .onDelete((snap, context) => {
-//   });
-
