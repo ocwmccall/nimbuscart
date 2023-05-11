@@ -260,12 +260,11 @@ export default function Header() {
           </li> : null
           }
           
-​
           {
             user ? 
               <li onClick={() => navigate('/mylists')}>My lists</li> : null
           }
-​
+
           {
             !user ? <li onClick={() => navigate('/signup')}>
             Signup
@@ -275,7 +274,7 @@ export default function Header() {
           {
             user ? 
             <li onClick={logout}>
-              Lougout
+              Logout
             </li>
             : 
             ""
