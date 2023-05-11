@@ -169,9 +169,9 @@ const NavCenter = styled.div`
     text-transform: uppercase;
 
     li {
-      font-size: .9rem;
+      font-size: 0.9rem;
       font-weight: bold;
-      padding: 20px .5rem;
+      padding: 20px 0.5rem;
 
       a {
         text-decoration: none;
@@ -185,8 +185,8 @@ const NavCenter = styled.div`
     }
 
     li:hover {
-        color: #ffd166;
-        background: #ef476f;
+      color: #ffd166;
+      background: #ef476f;
     }
   }
 
@@ -241,8 +241,8 @@ export default function Header() {
   //   }
   // }
 
-    return (
-      <NavContainer>
+  return (
+    <NavContainer>
       <NavCenter>
         <div className="nav-header">
           <Link to="/">
@@ -252,37 +252,13 @@ export default function Header() {
             {showLinks ? <FaTimes /> : <FaBars />}
           </button>
         </div>
-        <ul className={showLinks ? 'links show-links' : 'links'}>
-
-          {
-            !user ? <li onClick={() => navigate('/login')}>
-            login
-          </li> : null
-          }
-          
-​
-          {
-            user ? 
-              <li onClick={() => navigate('/mylists')}>My lists</li> : null
-          }
-​
-          {
-            !user ? <li onClick={() => navigate('/signup')}>
-            Signup
-          </li> : ""
-          }
-          
-          {
-            user ? 
-            <li onClick={logout}>
-              Lougout
-            </li>
-            : 
-            ""
-          }
-          
+        <ul className={showLinks ? "links show-links" : "links"}>
+          {!user ? <li onClick={() => navigate("/login")}>login</li> : null}​
+          {user ? <li onClick={() => navigate("/mylists")}>My lists</li> : null}
+          ​{!user ? <li onClick={() => navigate("/signup")}>Signup</li> : ""}
+          {user ? <li onClick={logout}>Logout</li> : ""}
         </ul>
       </NavCenter>
     </NavContainer>
-    );
+  );
 }
