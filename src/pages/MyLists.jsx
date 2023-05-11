@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
 import DataContext from '../context/DataContext';
 
+import { useNavigate } from "react-router";
+
 import { db } from '../firebase'
 import { collection, getDocs, addDoc, deleteDoc, doc, query, where } from 'firebase/firestore';
 import Lists from './Lists';
 import styled from 'styled-components';
 
 function MyLists({ user }) {
+  const navigate = useNavigate();
+
   const [lists, setLists] = useState(null);
   const [name, setName] = useState("");
 
@@ -50,12 +54,6 @@ function MyLists({ user }) {
     await deleteDoc(doc(db, "users", selectedId));
   };
 
-  const handleEditList = (e) => {
-    const docRef = doc(db, "users", selectedId);
-
-    // do stuff
-  };
-
   useEffect(() => {
     getListIndex()
   }, [])
@@ -87,13 +85,12 @@ function MyLists({ user }) {
               </label>
               <button className='btn'>New List</button>
             </form>
-            <button onClick={handleEditList}>Edit List</button>
+            <button onClick={()=>navigate("/listeditor")}>Edit List</button>
             <button onClick={handleDeleteList}>Delete List</button>
           </div>
         </div>
       </div>
     </Styling>
-
   )
 }
 

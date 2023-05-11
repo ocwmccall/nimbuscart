@@ -57,7 +57,7 @@ const Login = () => {
                   Login
                 </button>            
                 <div>
-                  <button onClick={()=>navigate("/forgotPassword") } >Forgot Password</button>
+                  <button onClick={()=>navigate("/forgotpassword") } >Forgot Password</button>
                 </div>
             </div>
             {error && <p>{error}</p>}
